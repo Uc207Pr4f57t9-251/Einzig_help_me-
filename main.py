@@ -4,7 +4,7 @@ if __name__ == "__main__":
     import sys
     
     # 解析命令行参数
-    mode = "realtime"  # 默认实时模式
+    mode = "batch"  # 默认实时模式
     speed = 1.0  # 默认速度
     file_path = r"c:\Users\Einzig\Downloads\MicrosoftEdgeDropFiles\Default\test.txt"  # 默认文件
     

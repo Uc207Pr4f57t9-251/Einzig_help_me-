@@ -31,6 +31,8 @@ class HorizontalMovementDetector:
         # 缓冲区
         self.accel_buffer = []
         self.time_buffer = []
+        # self.simulation_start = utime.time()
+        self.simulation_start = 0
         
         # 峰值检测状态
         self.peaks_detected = []
@@ -127,7 +129,7 @@ class HorizontalMovementDetector:
         current_time = self.time_buffer[-1]
         
         # 获取足够的历史数据用于分析
-        analysis_window = min(100, len(buffer_list))  # 分析最近100个点
+        analysis_window = min(int(self.peak_time_window*self.sample_rate*0.8), len(buffer_list))  # 分析最近100个点
         recent_data = buffer_list[-analysis_window:]
         
         if len(recent_data) < 30:
@@ -406,9 +408,9 @@ class HorizontalMovementDetector:
         print("\n"*2 + "=" * 50)
         print(f"| Movement Detected: {direction} direction")
         print(f"| Peak sequence:     {first_peak['type']} ({first_peak['value']:.2f}) "
-              f"@{self._format_time(first_peak['time'])} # {first_peak['time']} ->")
+              f"@{self._format_time(first_peak['time'])} # {first_peak['time'] - self.simulation_start} ->")
         print("|" + " "*20 + f"{second_peak['type']} ({second_peak['value']:.2f}) "
-              f" @{self._format_time(second_peak['time'])} # {second_peak['time']}")
+              f" @{self._format_time(second_peak['time'])} # {second_peak['time'] - self.simulation_start}")
         print(f"| Time interval:     {time_interval:.3f}s")
         print(f"| Velocity change:   {velocity_change:.3f} m/s")
         print(f"| Distance:          {distance:.3f} m ({distance * 100:.1f} cm)")
