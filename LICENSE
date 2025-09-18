@@ -1,0 +1,91 @@
+EINZIG General Private License (EINZIG-1.0)
+
+Copyright (c) 2025 Schwi. All rights reserved.
+
+Preamble
+This License governs the use, copying, modification, and distribution of the software and associated documentation files (the “Software”). The intent of this license is to preserve strong reciprocity and distribution terms similar in purpose to the GNU General Public License (GPL), while at the same time making clear that full rights to use and distribute this Software are granted **only** to the individual named **Schwi**. Any other person or entity may not exercise the rights granted herein except by the express, written permission of Schwi and under the conditions set forth below.
+
+## 1. Definitions
+
+* “You” means any person or entity other than Schwi unless otherwise stated.
+* “Schwi” means the individual named Schwi who owns the copyright or to whom the copyright owner has granted exclusive rights under this License.
+* “Convey” means any verbatim or modified copy of the Software made available to a third party (including publication, distribution, or other transfer).
+* “Source Code” means the preferred form for making modifications to the Software.
+* “Object Code” means any non-source form of the Software.
+
+## 2. Grant of Rights to Schwi
+
+Subject to the terms and conditions of this License, **Schwi** is hereby granted a perpetual, worldwide, non-exclusive (as between versions of this license) royalty-free license to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom Schwi distributes the Software to do so, subject to the restrictions set out below.
+
+## 3. No Rights Granted to Others Except by Written Authorization
+
+Except as explicitly authorized in writing by **Schwi**, no one else is granted any rights under this License. Specifically:
+
+* If you are **not Schwi**, you have **no** right to use, copy, modify, run, publish, or distribute the Software, in whole or in part, unless and until Schwi grants you express written permission.
+* Any written permission that Schwi may grant to another person or entity (“Authorized Recipient”) must be explicit and may be conditional. Unless and until Schwi issues such written authorization, all rights are reserved with respect to every other person or entity.
+
+## 4. Conditions on Authorized Recipients (Copyleft-style)
+
+If Schwi grants express written permission to an Authorized Recipient to use or convey the Software, then the following conditions apply to that Authorized Recipient and to any further recipients that Authorized Recipient is authorized by Schwi to convey the Software to:
+
+a. **Source Availability.** Any Authorized Recipient who conveys the Software (or a work based on the Software) in Object Code form must accompany the conveyance with a complete copy of the Corresponding Source, or a written offer, valid for at least three years, to provide the Corresponding Source on request at no further charge.
+
+b. **Same-License Requirement.** Any work based on the Software that is conveyed by an Authorized Recipient must be licensed to downstream recipients under this same EINZIG General Private License (or another license that Schwi expressly allows in writing). No additional restrictions that would prevent compliance with this License may be imposed by the Authorized Recipient.
+
+c. **Preserve Notices.** All copyright, license, patent, and attribution notices present in the Source Code must be preserved in the Source Code of any modified versions and must accompany any conveyance.
+
+d. **No Additional Restrictions.** You may not impose further restrictions on the rights granted under this License, including any attempt to require payment or prohibit copying, modification, or redistribution beyond what this License permits, except to the extent Schwi has explicitly granted otherwise in writing.
+
+## 5. Patent Grant
+
+To the extent Schwi (or any Authorized Recipient who is an author of contributions and who is authorized by Schwi) owns patents necessarily infringed by the use of their contributions and the practice of this Software as provided, Schwi (and any such Authorized Recipient) grants to authorized downstream recipients a non-exclusive, worldwide, royalty-free patent license to make, use, sell, and otherwise exploit those contributions, subject to the same conditions in Section 4. This patent license is automatically terminated for any licensee who (a) files a patent infringement lawsuit alleging that the Software or a substantial portion of it infringes their patent, or (b) imposes further restrictions inconsistent with this License.
+
+## 6. Remote Network Interaction (if applicable)
+
+If an Authorized Recipient modifies the Software and runs the modified version to provide services to third parties over a network, the Authorized Recipient must, at the request of any recipient of those services, provide the Corresponding Source of the modified version under the same terms required by Section 4.
+
+## 7. Termination
+
+a. Any unauthorized exercise of rights (including use or distribution by any person or entity other than Schwi without Schwi’s written authorization) terminates that person or entity’s rights under this License immediately.
+
+b. Rights granted to an Authorized Recipient under Section 4 will terminate automatically if that Authorized Recipient fails to comply with any of the conditions of this License and does not cure such failure within thirty (30) days of receiving written notice from Schwi.
+
+c. Termination of rights does not terminate obligations that accrued prior to termination.
+
+## 8. Disclaimer of Warranty
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NONINFRINGEMENT. Schwi (and contributors, if any) DISCLAIM ALL WARRANTIES TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.
+
+## 9. Limitation of Liability
+
+IN NO EVENT SHALL Schwi OR ANY AUTHORIZED RECIPIENT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION), HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+## 10. Acceptance and Entire Agreement
+
+Use of the Software by Schwi constitutes acceptance of this License by Schwi. Use of the Software by any person or entity other than Schwi constitutes acceptance of this License only if Schwi first grants that person or entity written authorization consistent with Section 3.
+
+This License constitutes the entire agreement between the parties with respect to the Software and supersedes all prior or contemporaneous understandings or agreements, whether written or oral, regarding such subject matter.
+
+## 11. Miscellaneous
+
+* If any provision of this License is held to be unenforceable, the remainder of the License will remain in full force and effect.
+* This License shall be governed by and construed in accordance with the laws that Schwi designates in the written authorization if applicable; otherwise, the governing law will be the law of the jurisdiction in which Schwi resides.
+
+## 12. How to Apply this License to Your Project
+
+To apply the EINZIG General Private License to your work, put the following notice in each Source file and in any documentation:
+
+```
+Copyright (c) YEAR Schwi
+EINZIG General Private License (EINZIG-1.0)
+
+This software is licensed under the EINZIG General Private License.
+Full text: <include full text of the license in LICENSE file or documentation>
+
+NOTE: Full rights to use, copy, modify and distribute this Software are
+reserved to the individual "Schwi" except where Schwi grants express written
+authorization to others. No party other than Schwi may use or redistribute
+this Software without Schwi's written permission. Authorized recipients,
+if any, are bound to the copyleft and other conditions in the license.
+```
+Perhaps you should not apply this license to your project hah.
