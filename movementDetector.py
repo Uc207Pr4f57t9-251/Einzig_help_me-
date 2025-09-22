@@ -1,12 +1,19 @@
-try: 
+try:
     import utime
 except ImportError:
     import time as utime
 
 import math
 
+try:
+    from queueManager import QueueManager
+    QUEUE_AVAILABLE = True
+except ImportError:
+    QUEUE_AVAILABLE = False
+    print("Warning: QueueManager not available")
+
 class HorizontalMovementDetector:
-    def __init__(self, 
+    def __init__(self,
                  noise_threshold=0.3,      # 噪声阈值 (m/s²)
                  peak_threshold=1.5,        # 峰值阈值 (m/s²)
                  peak_max_threshold=5.0,    # 峰值最大阈值 (m/s²)
@@ -15,7 +22,9 @@ class HorizontalMovementDetector:
                  sample_rate=200,           # 采样率 (Hz)
                  ma_window=5,               # 移动平均窗口
                  trigger_threshold=0.8,     # 触发检测的阈值 (m/s²)
-                 peak_confirmation_delay=0.3):  # 峰值确认延迟（秒）
+                 peak_confirmation_delay=0.3,  # 峰值确认延迟（秒）
+                 enable_queue=True,         # 启用队列管理
+                 queue_filename="queue_status.txt"):  # 队列文件名
         
         self.noise_threshold = noise_threshold
         self.peak_threshold = peak_threshold
@@ -51,6 +60,17 @@ class HorizontalMovementDetector:
         self.last_movement_time = None
         self.last_movement_direction = None
         self.last_movement_distance = None  # 新增：记录移动距离
+
+        # 队列管理器
+        self.queue_manager = None
+        if enable_queue and QUEUE_AVAILABLE:
+            try:
+                self.queue_manager = QueueManager(queue_filename)
+                print("Queue Manager initialized")
+            except Exception as e:
+                print(f"Failed to initialize Queue Manager: {e}")
+        elif enable_queue:
+            print("Queue management requested but QueueManager not available")
     def _format_time(self, ts):
         """
         将 epoch 时间或浮点时间转换为 "HH:MM:SS" 字符串。
@@ -398,13 +418,13 @@ class HorizontalMovementDetector:
             self.forward_movement_count += 1
         else:
             self.backward_movement_count += 1
-        
+
         self.last_movement_time = second_peak['time']
         self.last_movement_direction = direction
         self.last_movement_distance = distance
-        
+
         time_interval = second_peak['time'] - first_peak['time']
-        
+
         print("\n"*2 + "=" * 50)
         print(f"| Movement Detected: {direction} direction")
         print(f"| Peak sequence:     {first_peak['type']} ({first_peak['value']:.2f}) "
@@ -417,6 +437,20 @@ class HorizontalMovementDetector:
         print(f"| Total movements:   {self.movement_count} "
               f"(Forward: {self.forward_movement_count}, "
               f"Backward: {self.backward_movement_count})")
+        print("=" * 50)
+
+        # 更新队列位置
+        if self.queue_manager:
+            if direction == 'forward':
+                success = self.queue_manager.move_forward()
+                if success:
+                    print("| Queue: Moved forward (position -1)")
+                else:
+                    print("| Queue: Already at front position")
+            else:  # backward
+                self.queue_manager.move_backward()
+                print("| Queue: Moved backward (position +1)")
+
         print("=" * 50 + "\n"*2)
     
     def _clean_old_peaks(self, current_time):
@@ -495,3 +529,40 @@ class HorizontalMovementDetector:
         print(f"  Detection triggered: {'Yes' if status['detection_triggered'] else 'No'}")
         print(f"  Buffer size: {status['buffer_size']} samples")
         print("=" * 50)
+
+        # 显示队列状态
+        if self.queue_manager:
+            self.queue_manager.print_status()
+
+    def set_initial_queue_position(self, position):
+        """手动设置队列初始位置（通过按钮或手机终端）"""
+        if self.queue_manager:
+            return self.queue_manager.set_initial_position(position)
+        else:
+            print("Queue manager not available")
+            return False
+
+    def get_queue_status(self):
+        """获取队列状态信息（用于发送到服务器）"""
+        if self.queue_manager:
+            return self.queue_manager.get_status_dict()
+        else:
+            return None
+
+    def mark_queue_synced(self):
+        """标记队列状态已同步到服务器"""
+        if self.queue_manager:
+            self.queue_manager.mark_synced()
+
+    def queue_needs_sync(self):
+        """检查队列是否需要同步到服务器"""
+        if self.queue_manager:
+            return self.queue_manager.needs_sync()
+        return False
+
+    def reset_queue(self):
+        """重置队列状态"""
+        if self.queue_manager:
+            self.queue_manager.reset_queue()
+        else:
+            print("Queue manager not available")
